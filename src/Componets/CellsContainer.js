@@ -2,38 +2,39 @@ import React, {useEffect, useState} from 'react'
 import Cells from './Cells';
 
 function CellsContainer() {
-  const [play, setPlay] = useState('');
+  const [playO, setPlayO] = useState('O');
+  const [playX, setPlayX] = useState('X');
   const [turn, setTurn] = useState(false);
-  let arr = ["", "", "", "", "", "", "", "", "",]
-
-  const handleClick = (e) => {
-    console.log(e.target.id);
-    if (e.target.value === undefined ) {
-      if (turn == false) {
-        setPlay('O');
-        setTurn(true);
-      } else if ( turn === true) {
-        setPlay('X');
-        setTurn(false)
-      }
-    }
-  }
+  const [index, setIndex] = useState();
+  const arr = ["", "", "", "", "", "", "", "", "",];
 
   useEffect(() => {
-
-  }, [play, turn]);
+    if(turn === false) {
+      arr[index] = playO;
+      console.log(arr);
+    } else {
+      arr[index] = playX;
+      console.log(arr);
+    }
+  }, [turn, index]);
   
 
  
   return (
     <div className='cell-container'>
       {
-        arr.map((elment, index) => {
-          console.log(index);
+        arr.map((elm, index) => {
           return <Cells 
+                  arr={arr}
                   id={index} 
-                  play={play} 
-                  handleClick={handleClick}
+                  setIndex={setIndex}
+                  playO={playO}
+                  playX={playX} 
+                  setPlayO={setPlayO}
+                  setPlayX={setPlayX}
+                  setTurn={setTurn}
+                  elm={elm}
+                  turn={turn}
                   />
         })
       }
