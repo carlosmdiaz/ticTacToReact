@@ -1,14 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-import Cells from './Componets/Cells';
+import CellsContainer from './Componets/CellsContainer';
 
 function App() {
   return (
     <div className="main-container">
       <div id='title'>Welcom to Tic Tac Toe</div>
       <div className='game-container'>
-        < Cells />
-        <button>Reset Game</button>
+        <CellsContainer/>
+        <button>Reset</button>
       </div>
     </div>
   );
